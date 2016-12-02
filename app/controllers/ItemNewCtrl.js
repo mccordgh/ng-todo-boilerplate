@@ -2,15 +2,25 @@
 
 app.controller('ItemNewCtrl', function($scope, ItemStorage, $location){
 
-	$scope.items = ItemStorage.getItemList();
-	$scope.newTask = {};
+	$scope.title = "Add a new task";
+	$scope.btnText = "Save new task";
+	$scope.newTask = {
+		assignedTo: "",
+		dependencies: "",
+		dueDate: "",
+		location: "",
+		task: "",
+		urgency: "low",
+		isCompleted: false,
+		uid: ""
+	};
 
 	$scope.addNewItem = () => {
-	    $scope.newTask.isCompleted = false;
-	    $scope.newTask.id = $scope.items.length;
-	    ItemStorage.postNewItem($scope.newTask);
-	    $scope.newTask = {};
-			$location.url("/items/list");
+	    ItemStorage.postNewItem($scope.newTask)
+	    	.then((response) => {
+				$location.url("/items/list");
+				$scope.$apply();
+	    });
 		};
 
 });

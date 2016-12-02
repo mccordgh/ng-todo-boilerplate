@@ -1,8 +1,12 @@
 <h1>Item Details</h1>
-
-<h2>Assigned To: {{selectedItem.assignedTo}}</h2>
-<h2>Due Date: {{selectedItem.dueDate}}</h2>
-<h2>Dependencies: {{selectedItem.dependencies}}</h2>
-<h2>Location: {{selectedItem.location}}</h2>
-<h2>Urgency: {{selectedItem.urgency}}</h2>
-<h2>Completed ?: {{(selectedItem.isCompleted ? "yes" : "no")}}</h2>
+<hr/>
+<ul>
+	</li>
+		<span class='col-md-4'>Assigned To:</span>
+		<h2>{{selectedItem.assignedTo}}</h2>
+		<h2>Task: {{selectedItem.task}}</h2>
+		<h2>Due Date: {{selectedItem.dueDate}}</h2>
+		<h2>Dependencies: {{selectedItem.dependencies}}</h2>
+		<h2>Location: {{selectedItem.locations}}</h2>
+		<h2>Urgency: {{selectedItem.urgency}}</h2>
+		<h2>Completed ?: {{(selectedItem.isCompleted ? "yes" : "no")}}</h2>

@@ -20,10 +20,30 @@ app.factory("ItemStorage", function($http, FBCreds) {
 		});
 	};
 
-	var postNewItem = (newTask) => {
-
+	var getSingleItem = (id) => {
+		return new Promise((resolve, reject) => {
+			$http.get(`${FBCreds.URL}/items/${id}.json`)
+			.success((itemObject) => {
+				resolve(itemObject);
+			})
+			.error((error) => {
+				reject(error);
+			});
+		});
 	};
 
-	return {getItemList, postNewItem};
+	var postNewItem = (newTask) => {
+		return new Promise((resolve, reject) => {
+			$http.post(`${FBCreds.URL}/items.json`, angular.toJson(newTask))
+				.success((itemObject) => {
+					resolve(itemObject);
+				})
+				.error((error) => {
+					reject(error);
+				});
+		});
+	};
+
+	return {getItemList, postNewItem, getSingleItem};
 
 });

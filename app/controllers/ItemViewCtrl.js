@@ -1,7 +1,11 @@
 "use strict";
 
-app.controller('ItemViewCtrl', function($scope){
+app.controller('ItemViewCtrl', function($scope, ItemStorage, $routeParams){
 
-  $scope.welcome = 'Hello';
+  ItemStorage.getSingleItem($routeParams.itemId)
+  	.then((itemObject) => {
+  		$scope.selectedItem = itemObject;
+  		$scope.$apply();
+  	});
 
 });
