@@ -1,12 +1,18 @@
 "use strict";
 
-app.controller('ToDoNavCtrl', function($scope, SearchTermData){
+app.controller('ToDoNavCtrl', function($scope, SearchTermData, AuthFactory){
 	
+	// console.log("isAuth", isAuth());
+	// $scope.isLoggedInt = isAuth();
 	$scope.searchText = SearchTermData;
 	$scope.navItems = [
 		{
 			name: "Logout",
-			url: "#/logout"
+			url: "#/login"
+		},
+		{
+			name: "Login / Register",
+			url: "#/login"
 		},
 		{
 			name: "All Items",

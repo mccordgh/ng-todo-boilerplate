@@ -19,15 +19,21 @@ app.config(function($routeProvider){
 		.when('/items/list', {
 			templateUrl: '../partials/item-list.html',
 			controller: 'ItemListCtrl',
-			// resolve: {isAuth}
+			resolve: {isAuth}
 		})
 		.when('/items/new', {
 			templateUrl: '../partials/item-form.html',
-			controller: 'ItemNewCtrl'
+			controller: 'ItemNewCtrl',
+			resolve: {isAuth}
 		})
 		.when('/items/:itemId', {
 			templateUrl: '../partials/item-details.html',
-			controller: 'ItemViewCtrl'
+			controller: 'ItemViewCtrl',
+			resolve: {isAuth}
+		})
+		.when('/login', {
+			templateUrl: '../partials/login.html',
+			controller: 'LoginCtrl'
 		})
 		.otherwise('/items/list');
 
@@ -36,7 +42,7 @@ app.config(function($routeProvider){
 app.run(($location, FBCreds) => {
 
 	let authConfig = {
-		apiKey: FBCreds.key,
+		apiKey: FBCreds.apiKey,
 		authDomain: FBCreds.authDomain,
 		URL: FBCreds.URL
 	};
